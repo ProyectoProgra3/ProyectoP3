@@ -98,7 +98,7 @@ public class iButtonFake extends JLabel implements MouseListener {
         setHorizontalAlignment(SwingConstants.CENTER);
         setBackground(ButtonBackgroundColor);
         addMouseListener(this);
-        setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        setFont(new Font("Segoe UI", Font.BOLD, 15));
     }
     
     public String getHTMLColor(Color c) 
@@ -140,7 +140,7 @@ public class iButtonFake extends JLabel implements MouseListener {
             );
         }
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        setBackground(HoverBackgroundColor.brighter());
+        setBackground(HoverBackgroundColor.darker());
         
     }
 

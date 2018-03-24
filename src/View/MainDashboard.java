@@ -17,13 +17,17 @@ import iComponents.iTextField;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.File;
+import javafx.geometry.Pos;
+import static javafx.geometry.Pos.BOTTOM_CENTER;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import static javax.swing.SwingConstants.BOTTOM;
 import static javax.swing.SwingConstants.CENTER;
+import static javax.swing.SwingConstants.TOP;
 import javax.swing.SwingUtilities;
 import jiconfont.icons.GoogleMaterialDesignIcons;
 
@@ -38,13 +42,13 @@ public class MainDashboard {
     public iPanel info_panel;
     public iPanel menu_panel;
     public iPanel search_panel;
-    public iButtonFake btn_agregar = new iButtonFake("Agregar Solicitud", "", new Color(247, 247, 247), new Color(106, 203, 214), new Color(247, 247, 247).darker(), new Color(106, 203, 214), GoogleMaterialDesignIcons.ACCOUNT_BALANCE_WALLET);
-    public iButtonFake btn_citas = new iButtonFake("Citas            ", "", new Color(247, 247, 247), new Color(106, 203, 214), new Color(247, 247, 247).darker(), new Color(106, 203, 214), GoogleMaterialDesignIcons.ACCOUNT_BALANCE_WALLET);
-    public iButtonFake btn_expd = new iButtonFake("Expedientes", "", new Color(247, 247, 247), new Color(106, 203, 214), new Color(247, 247, 247).darker(), new Color(106, 203, 214), GoogleMaterialDesignIcons.ACCOUNT_BALANCE_WALLET);
-    public iButtonFake btn_psico = new iButtonFake("Psicólogos", "", new Color(247, 247, 247), new Color(106, 203, 214), new Color(247, 247, 247).darker(), new Color(106, 203, 214), GoogleMaterialDesignIcons.ACCOUNT_BALANCE_WALLET);
-    public iButtonFake btn_just = new iButtonFake("Justificación", "", new Color(247, 247, 247), new Color(106, 203, 214), new Color(247, 247, 247).darker(), new Color(106, 203, 214), GoogleMaterialDesignIcons.ACCOUNT_BALANCE_WALLET);
-    public iButtonFake btn_report = new iButtonFake("Reportes", "", new Color(247, 247, 247), new Color(106, 203, 214), new Color(247, 247, 247).darker(), new Color(106, 203, 214), GoogleMaterialDesignIcons.ACCOUNT_BALANCE_WALLET);
-    public iButtonFake btn_curso = new iButtonFake("Cursos", "", new Color(247, 247, 247), new Color(106, 203, 214), new Color(247, 247, 247).darker(), new Color(106, 203, 214), GoogleMaterialDesignIcons.ACCOUNT_BALANCE_WALLET);
+    public iButtonFake btn_agregar = new iButtonFake("Agregar Solicitud", "", new Color(247, 247, 247), new Color(106, 203, 214), new Color(247, 247, 247).darker(), new Color(106, 203, 214), GoogleMaterialDesignIcons.ADD_CIRCLE_OUTLINE);
+    public iButtonFake btn_modif = new iButtonFake("Modificar persona", "", new Color(247, 247, 247), new Color(106, 203, 214), new Color(247, 247, 247).darker(), new Color(106, 203, 214), GoogleMaterialDesignIcons.PERSON);
+    public iButtonFake btn_citas = new iButtonFake("Citas", "", new Color(247, 247, 247), new Color(106, 203, 214), new Color(247, 247, 247).darker(), new Color(106, 203, 214), GoogleMaterialDesignIcons.DATE_RANGE);
+    public iButtonFake btn_psico = new iButtonFake("Psicólogos", "", new Color(247, 247, 247), new Color(106, 203, 214), new Color(247, 247, 247).darker(), new Color(106, 203, 214), GoogleMaterialDesignIcons.PERM_IDENTITY);
+    public iButtonFake btn_just = new iButtonFake("Justificación", "", new Color(247, 247, 247), new Color(106, 203, 214), new Color(247, 247, 247).darker(), new Color(106, 203, 214), GoogleMaterialDesignIcons.CLASS);
+    public iButtonFake btn_report = new iButtonFake("Reportes", "", new Color(247, 247, 247), new Color(106, 203, 214), new Color(247, 247, 247).darker(), new Color(106, 203, 214), GoogleMaterialDesignIcons.CHROME_READER_MODE);
+    public iButtonFake btn_curso = new iButtonFake("Cursos", "", new Color(247, 247, 247), new Color(106, 203, 214), new Color(247, 247, 247).darker(), new Color(106, 203, 214), GoogleMaterialDesignIcons.ATTACH_FILE);
     
     
     
@@ -107,7 +111,7 @@ public class MainDashboard {
         dash_frm = new iFrame(80.0f, 80.0f, 5, 2,"", JFrame.EXIT_ON_CLOSE);
         menu_panel  = new iPanel(0, 30, 200, 0, 5, 5, dash_frm);
         menu_panel.setResponsiveHeight(100.0f, 30);
-        search_panel = new iPanel(200, 30, 0, 60, 5, 0, dash_frm);
+        search_panel = new iPanel(200, 30, 0, 60, 2, -5, dash_frm);
         search_panel.setResponsiveWidth(100.0f, 200);
         info_panel = new iPanel(200, 90, 0, 0, 5, 5, dash_frm);
         info_panel.setResponsiveWidth(100.0f, 200);
@@ -130,9 +134,10 @@ public class MainDashboard {
         menu_panel.setBackground(new Color(106, 203, 214));
 
         //*** Aquí agregamos los FAKE BUTTONS al panel, (Nombre, largo, ancho, posición)
+        menu_panel.AddSingleObject(triage_lbl, 180, 40, LEFT);
         menu_panel.AddSingleObject(btn_agregar, 180, 40, LEFT);
-        menu_panel.AddSingleObject(btn_citas, 100, 40, LEFT);
-        menu_panel.AddSingleObject(btn_expd, 140, 40, LEFT);
+        menu_panel.AddSingleObject(btn_modif, 180, 40, LEFT);
+        menu_panel.AddSingleObject(btn_citas, 95, 40, LEFT);
         menu_panel.AddSingleObject(btn_psico, 135, 40, LEFT);
         menu_panel.AddSingleObject(btn_curso, 105, 40, LEFT);
         menu_panel.AddSingleObject(btn_just, 140, 40, LEFT);
@@ -232,14 +237,12 @@ public class MainDashboard {
         iClock clock = new iClock(80, 100, 100, 100);
         clock.setForeground(new Color(247, 247, 247));
         clock.setFont(new Font("Rockwell", 1, 12));
-        clock.setBounds(65, 500, 80, 100);
+        clock.setBounds(65, 450, 80, 100);
 
         ImageIcon fondo = new ImageIcon("C:/Users/crodas/Pictures/fondo.png");
         JLabel fondo_label = new JLabel(fondo);
-        fondo_label.setBounds(100, 60, 400, 400);
-
-        menu_panel.add(triage_lbl);
-        menu_panel.add(clock);
+        fondo_label.setBounds(150, 60, 400, 400);
+        
         
         
         info_panel.add(id_lbl);
@@ -283,10 +286,14 @@ public class MainDashboard {
         //Metodo para cargar botones al clickear "AGREGAR SOLICITUD"    
         search_panel.dispose();
         search_panel.repaint();
-        search_panel.AddObject(btn_fam, 100, 60, 345);
-        search_panel.AddObject(btn_pareja, 100, 60, 245);
-        search_panel.AddObject(btn_adol, 125, 60, 110);
-        search_panel.AddObject(btn_niño, 100, 60, 5);
+        search_panel.AddObject(btn_fam, 100, 60, 325);
+        btn_fam.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
+        search_panel.AddObject(btn_pareja, 100, 60, 225);
+        btn_pareja.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
+        search_panel.AddObject(btn_adol, 125, 60, 100);
+        btn_adol.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
+        search_panel.AddObject(btn_niño, 100, 60, -1);
+        btn_niño.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
         search_panel.newLine();
         search_panel.finalice();
 
@@ -296,8 +303,10 @@ public class MainDashboard {
         //Metodo para cargar botones al clickear "CITAS"
         search_panel.dispose();
         search_panel.repaint();
-        search_panel.AddObject(btn_type, 150, 60, 105);
-        search_panel.AddObject(btn_ced, 100, 60, 5);
+        search_panel.AddObject(btn_type, 150, 60, 99);
+        btn_type.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
+        search_panel.AddObject(btn_ced, 100, 60, -1);
+        btn_ced.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
         search_panel.newLine();
         //hola
         //holaMario
@@ -307,20 +316,27 @@ public class MainDashboard {
         //Panel de busquedas      
         search_panel.dispose();
         search_panel.repaint();
-        search_panel.AddObject(btn_solicitudes, 120, 60, 245);
-        search_panel.AddObject(btn_clinica, 120, 60, 125);
-        search_panel.AddObject(btn_Lnegra, 120, 60, 5);
+        search_panel.AddObject(btn_solicitudes, 120, 60, 243);
+        btn_solicitudes.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
+        search_panel.AddObject(btn_clinica, 120, 60, 123);
+        btn_clinica.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
+        search_panel.AddObject(btn_Lnegra, 120, 60, -1);
+        btn_Lnegra.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
         search_panel.newLine();
     }
 
     public void BtnPsicologos() {
         //Panel de busquedas        
         search_panel.dispose();
-        search_panel.repaint();
-        search_panel.AddObject(btn_mosPsico, 135, 60, 410);
-        search_panel.AddObject(btn_agrePsico, 135, 60, 275);
-        search_panel.AddObject(btn_eliPsico, 135, 60, 140);
-        search_panel.AddObject(btn_eliTodos, 135, 60, 5);
+        search_panel.repaint();  
+        search_panel.AddObject(btn_eliTodos, 135, 60, 407);
+        btn_eliTodos.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
+        search_panel.AddObject(btn_eliPsico, 135, 60, 272);
+        btn_eliPsico.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
+        search_panel.AddObject(btn_agrePsico, 135, 60, 135);
+        btn_agrePsico.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
+        search_panel.AddObject(btn_mosPsico, 135, 60, -1);
+        btn_mosPsico.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
         search_panel.newLine();
     }
     
@@ -328,9 +344,9 @@ public class MainDashboard {
         //Metodo para cargar botones al clickear "CURSOS"
         search_panel.dispose();
         search_panel.repaint();                
-        search_panel.AddObject(btn_eliminar, 120, 60, 125);
+        search_panel.AddObject(btn_eliminar, 120, 60, 123);
         btn_eliminar.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
-        search_panel.AddObject(btn_agrcurso, 120, 60, 5);
+        search_panel.AddObject(btn_agrcurso, 120, 60, -1);
         btn_agrcurso.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
         search_panel.newLine();
     }
@@ -338,9 +354,9 @@ public class MainDashboard {
     public void BtnJustificacion() {
         search_panel.dispose();
         search_panel.repaint();
-        search_panel.AddObject(btn_justi, 140, 60, 131);
+        search_panel.AddObject(btn_justi, 140, 60, 129);
         btn_justi.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
-        search_panel.AddObject(btn_justi_print, 130, 60, 2);
+        search_panel.AddObject(btn_justi_print, 130, 60, -1);
         btn_justi_print.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
         search_panel.newLine();
     }
@@ -348,11 +364,11 @@ public class MainDashboard {
     public void BtnReportes() {
         search_panel.dispose();
         search_panel.repaint();
-        search_panel.AddObject(btn_report_diario, 120, 60, 242);
+        search_panel.AddObject(btn_report_diario, 120, 60, 240);
         btn_report_diario.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
-        search_panel.AddObject(btn_report_semanal, 120, 60, 122);
+        search_panel.AddObject(btn_report_semanal, 120, 60, 120);
         btn_report_semanal.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
-        search_panel.AddObject(btn_report_mensual, 120, 60, 2);
+        search_panel.AddObject(btn_report_mensual, 120, 60, -1);
         btn_report_mensual.setBorder(0, 0, 0, 1, new Color(162, 202, 202));
         search_panel.newLine();
     }

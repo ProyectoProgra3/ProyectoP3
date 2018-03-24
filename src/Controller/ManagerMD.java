@@ -28,7 +28,7 @@ public class ManagerMD implements MouseListener {
         this.bl = bl;
         this.md.btn_agregar.addMouseListener(this);
         this.md.btn_citas.addMouseListener(this);
-        this.md.btn_expd.addMouseListener(this);
+        this.md.btn_modif.addMouseListener(this);
         this.md.btn_psico.addMouseListener(this);
         this.md.btn_just.addMouseListener(this);
         this.md.btn_report.addMouseListener(this);
@@ -42,7 +42,7 @@ public class ManagerMD implements MouseListener {
         if (md.btn_citas == me.getSource()) {
             md.Btn_Cita();
         }
-        if (md.btn_expd == me.getSource()) {
+        if (md.btn_modif == me.getSource()) {
             md.BtnExpedientes();
         }
         if (md.btn_psico == me.getSource()) {
