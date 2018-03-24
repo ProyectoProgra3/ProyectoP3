@@ -104,10 +104,17 @@ public class MainDashboard {
     
     public MainDashboard() {
 
-        dash_frm = new iFrame(800, 630, 5, 2, JFrame.EXIT_ON_CLOSE);
-        info_panel = new iPanel(0, 0, 80.0f, 80.0f, 5, 5, dash_frm);
-        menu_panel  = new iPanel(0, 0, 20.0f, 100.0f, 5, 5, dash_frm);
-        search_panel = new iPanel(0, 0, 80.0f, 10.0f, 5, 5, dash_frm);
+        dash_frm = new iFrame(80.0f, 80.0f, 5, 2,"", JFrame.EXIT_ON_CLOSE);
+        menu_panel  = new iPanel(0, 30, 200, 0, 5, 5, dash_frm);
+        menu_panel.setResponsiveHeight(100.0f, 30);
+        search_panel = new iPanel(200, 30, 0, 60, 5, 0, dash_frm);
+        search_panel.setResponsiveWidth(100.0f, 200);
+        info_panel = new iPanel(200, 90, 0, 0, 5, 5, dash_frm);
+        info_panel.setResponsiveWidth(100.0f, 200);
+        info_panel.setResponsiveHeight(100.0f, 90);
+        info_panel.setBackground(new Color(255, 255, 255));
+        dash_frm.setHeaderBackground(new Color(106, 203, 214));
+        
         initComponents();
     }
 
@@ -137,8 +144,6 @@ public class MainDashboard {
 
 
         //Panel de información (Aqui se desplegaría toda la información)
-        info_panel.setBounds(200, 90, 600, 540);
-        info_panel.setBackground(new Color(255, 255, 255));
         
  ///////////////////////////////////////////////////////////////////////////////       
         JLabel id_lbl = new JLabel();
