@@ -22,8 +22,8 @@ import javax.swing.JLabel;
  * @author crodas
  */
 public class Login {
-
-    public iPanel panel = new iPanel(600, 400, 5, 5, 5);
+    //600, 400, 5, 5, 5
+    public iPanel panel;
     public JLabel tri_lbl = new JLabel();
     public JLabel usr_lbl = new JLabel();
     public JLabel pass_lbl = new JLabel();
@@ -34,6 +34,7 @@ public class Login {
 
     public Login() {
         frm = new iFrame(600, 400, 5, 2, JFrame.EXIT_ON_CLOSE);
+        panel = new iPanel(0, 0, 100.0f, 100.0f, 5, 5, frm);
         initcomponets();
     }
 
